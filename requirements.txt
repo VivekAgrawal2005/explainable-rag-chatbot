@@ -1,0 +1,23 @@
+# Explainable RAG Chatbot - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# PDF Processing
+PyPDF2>=3.0.0
+
+# Text Embeddings
+sentence-transformers>=2.2.0
+
+# Vector Search
+faiss-cpu>=1.7.4
+
+# Named Entity Recognition
+spacy>=3.7.0
+
+# Knowledge Graph
+networkx>=3.0
+
+# HTTP Requests (for Ollama API)
+requests>=2.31.0
+
+# NumPy (dependency for embeddings and FAISS)
+numpy>=1.24.0
