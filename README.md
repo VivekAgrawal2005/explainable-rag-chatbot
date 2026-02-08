@@ -11,24 +11,6 @@ A complete Retrieval-Augmented Generation (RAG) chatbot with explainability feat
 - **Local LLM**: Uses LLaMA 3 via Ollama (completely offline)
 - **Explainability**: Shows which entities and relationships were used to generate answers
 
-## Tech Stack
-
-| Component             | Technology                     |
-|----------------------|--------------------------------|
-| Document Ingestion    | PDFPlumber, PyPDF2            |
-| Text Chunking         | Custom Python                 |
-| Embedding Generation  | Sentence Transformers, PyTorch|
-| Vector Search         | FAISS                         |
-| Entity Extraction     | spaCy                         |
-| Knowledge Graph       | Custom Graph Builder          |
-| Answer Generation     | Ollama + LLaMA 3              |
-| Explainability Layer  | Custom Traceability Engine    |
-| Interactive Interface | Python CLI                    |
-
-
-## Architecture Diagram
-<img width="2116" height="490" alt="Aerchitecture Diagram" src="https://github.com/user-attachments/assets/9b6f3a6d-42f0-4a8d-b556-e1fab7508593" />
-
 
 ## Prerequisites
 
