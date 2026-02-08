@@ -11,6 +11,25 @@ A complete Retrieval-Augmented Generation (RAG) chatbot with explainability feat
 - **Local LLM**: Uses LLaMA 3 via Ollama (completely offline)
 - **Explainability**: Shows which entities and relationships were used to generate answers
 
+## Tech Stack
+
+| Component             | Technology                     |
+|----------------------|--------------------------------|
+| Document Ingestion    | PDFPlumber, PyPDF2            |
+| Text Chunking         | Custom Python                 |
+| Embedding Generation  | Sentence Transformers, PyTorch|
+| Vector Search         | FAISS                         |
+| Entity Extraction     | spaCy                         |
+| Knowledge Graph       | Custom Graph Builder          |
+| Answer Generation     | Ollama + LLaMA 3              |
+| Explainability Layer  | Custom Traceability Engine    |
+| Interactive Interface | Python CLI                    |
+
+
+## Architecture Diagram
+<img width="2116" height="490" alt="Aerchitecture Diagram" src="https://github.com/user-attachments/assets/9b6f3a6d-42f0-4a8d-b556-e1fab7508593" />
+
+
 ## Prerequisites
 
 1. **Python 3.10+** installed
@@ -124,20 +143,61 @@ This helps users understand:
 ## Example Output
 
 ```
-You: What is artificial intelligence?
+Ask question: What audits must be conducted and what are the threshold values for uptime?
 
-Answer:
-Artificial intelligence (AI) is the simulation of human intelligence by machines...
+Searching for: 'What audits must be conducted and what are the threshold values for uptime?'...
+INFO:query_engine:Query returned 5 results
 
-Explanation:
-Entities:
-  - Artificial Intelligence (ORG)
-  - Machine Learning (PRODUCT)
-  - John McCarthy (PERSON)
+Found 5 matching fact(s):
+--------------------------------------------------------------------------------
 
-Relations:
-  - Artificial Intelligence -> related_to -> Machine Learning
-  - John McCarthy -> related_to -> Artificial Intelligence
+1. Fact: Any security breach affecting more than 1,000 customer records must be reported to regulatory authorities within 72 hours
+   Type: NUMBER,RISK,CONSTRAINT,COMPLIANCE
+   Similarity Score: 0.434
+   Importance Score: 0.596
+   Confidence Score: 1.000
+   Source: sample_section_10
+
+2. Fact: The risk assessment must be completed within 4 hours of transaction initiation
+   Type: NUMBER,RISK,CONSTRAINT
+   Similarity Score: 0.403
+   Importance Score: 0.601
+   Confidence Score: 1.000
+   Source: sample_section_6
+
+3. Fact: Core banking systems must maintain 99.9% uptime availability
+   Type: NUMBER,CONSTRAINT
+   Similarity Score: 0.396
+   Importance Score: 0.598
+   Confidence Score: 1.000
+   Source: sample_section_22
+
+4. Fact: The investigation must be completed within 48 hours
+   Type: NUMBER,CONSTRAINT
+   Similarity Score: 0.373
+   Importance Score: 0.598
+   Confidence Score: 1.000
+   Source: sample_section_7
+
+5. Fact: However, all exceptions must be documented and reported to the board of directors within 30 days       
+   Type: NUMBER,CONSTRAINT,EXCEPTION
+   Similarity Score: 0.372
+   Importance Score: 0.603
+   Confidence Score: 1.000
+   Source: sample_section_16
+--------------------------------------------------------------------------------
+
+Show original source for top result? (yes/no): yes
+================================================================================
+ORIGINAL SOURCE TEXT
+================================================================================
+Section: Regulatory Compliance Standards
+Document: sample
+
+Original Paragraph:
+------------------------------------------------------------
+The organization maintains compliance with PCI DSS Level 1 standards at all times. Any security breach affecting more than 1,000 customer records must be reported to regulatory authorities within 72 hours.
+------------------------------------------------------------
 ```
 
 ## Troubleshooting
